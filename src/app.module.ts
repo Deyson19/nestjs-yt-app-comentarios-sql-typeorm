@@ -5,6 +5,8 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PublicacionModule } from './publicacion/publicacion.module';
 import { Publicacion } from './publicacion/entities/publicacion.entity';
+import { ComentarioModule } from './comentario/comentario.module';
+import { Comentario } from './comentario/entities/comentario.entity';
 
 @Module({
   imports: [
@@ -22,12 +24,10 @@ import { Publicacion } from './publicacion/entities/publicacion.entity';
       extra: {
         trustServerCertificate: true,
       },
-      entities: [
-        //*Importar entidades
-        Publicacion,
-      ],
+      entities: [Comentario, Publicacion],
     }),
     PublicacionModule,
+    ComentarioModule,
   ],
   controllers: [AppController],
   providers: [AppService],

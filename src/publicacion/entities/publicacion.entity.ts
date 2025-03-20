@@ -1,5 +1,12 @@
 import { randomUUID } from 'crypto';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Comentario } from 'src/comentario/entities/comentario.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('Publicaciones', { schema: 'dbo' })
 export class Publicacion {
@@ -13,5 +20,7 @@ export class Publicacion {
   contenido: string;
   @Column()
   fechaPublicacion: string = new Date().toISOString();
-  //TODO: relación hacia comentarios
+  @OneToMany(() => Comentario, (comentario) => comentario.publicacion)
+  @JoinColumn()
+  comentarios: Comentario[] | null;
 }

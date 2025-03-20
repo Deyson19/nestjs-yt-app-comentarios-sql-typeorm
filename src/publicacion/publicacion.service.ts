@@ -42,7 +42,7 @@ export class PublicacionService {
 
   async findOne(id: string): Promise<Publicacion | null> {
     try {
-      const publicacion = await this.getPost(id);
+      const publicacion = await this.getPost(id, true);
       return publicacion;
     } catch (error) {
       console.log(error);

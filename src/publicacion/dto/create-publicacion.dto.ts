@@ -1,7 +1,15 @@
+import { IsString } from 'class-validator';
+
 export class CreatePublicacionDto {
-  //*TODO: Agrear decorador para validaciones y para swagger
+  //*TODO: Integrar swagger
+  @IsString({
+    message: 'EL campo de autor es requerido',
+  })
   autor: string;
+  @IsString()
   categoria: string;
+  @IsString()
   contenido: string;
+  @IsString()
   fechaPublicacion: string;
 }
